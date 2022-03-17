@@ -11,9 +11,7 @@
 #include "nnet_utils/nnet_padding.h"
 #include "nnet_utils/nnet_padding_stream.h"
  
-//hls-fpga-machine-learning insert weights
-#include "weights/w2.h"
-#include "weights/b2.h"
+
 
 //hls-fpga-machine-learning insert layer-config
 // zp2d_conv2d

@@ -20,8 +20,18 @@
 
 //hls-fpga-machine-learning insert layer-precision
 typedef ap_fixed<16,14> model_default_t;
+typedef ap_fixed<16,14> input_t;
+typedef ap_fixed<16,14> layer4_t;
+typedef ap_fixed<16,14> layer2_t;
+
+#endif
+
+/*
+//hls-fpga-machine-learning insert layer-precision
+typedef ap_fixed<16,14> model_default_t;
 typedef nnet::array<ap_fixed<16,14>, 256*1> input_t;
 typedef nnet::array<ap_fixed<16,14>, 256*1> layer4_t;
 typedef nnet::array<ap_fixed<16,14>, 256*1> layer2_t;
 
 #endif
+*/

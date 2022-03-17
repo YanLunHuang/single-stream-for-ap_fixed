@@ -21,11 +21,18 @@
 #include "myproject.h"
 #include "parameters.h"
 
+//hls-fpga-machine-learning insert weights
+#include "weights/w2.h"
+#include "weights/b2.h"
+
+
 void myproject(
     hls::stream<input_t> &input_1,
     hls::stream<layer2_t> &layer2_out,
     unsigned short &const_size_in_1,
-    unsigned short &const_size_out_1
+    unsigned short &const_size_out_1,
+	model_default_t w2[589824],
+	model_default_t b2[256]
 ) {
 
     //hls-fpga-machine-learning insert IO
@@ -53,8 +60,8 @@ void myproject(
 
     hls::stream<layer4_t> layer4_out("layer4_out");
     #pragma HLS STREAM variable=layer4_out depth=25
-    nnet::zeropad2d_cl<input_t, layer4_t, config4>(input_1, layer4_out); // zp2d_conv2d
+    nnet::zeropad2d_cl_me<input_t, layer4_t, config4>(input_1, layer4_out); // zp2d_conv2d
 
-    nnet::conv_2d_cl<layer4_t, layer2_t, config2>(layer4_out, layer2_out, w2, b2); // conv2d
+    nnet::conv_2d_cl_me<layer4_t, layer2_t, config2>(layer4_out, layer2_out, w2, b2); // conv2d
 
 }
